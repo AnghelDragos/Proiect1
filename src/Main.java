@@ -10,7 +10,7 @@ public class Main {
                 Actiune.ADAUGA_ANTRENOR, Actiune.AFISEAZA_PERSOANE, Actiune.AFISEAZA_ANTRENORI, Actiune.AFISEAZA_ABONAT_MAX, Actiune.ELIMINA_PERSOANA,
                 Actiune.AFISEAZA_PERSOANE, Actiune.ADAUGA_ANTRENOR, Actiune.AFISEAZA_PERSOANE, Actiune.INCHIDE};
 
-    salaDeFitness1.actiune(Actiune.DESCHIDE); // am deschis manual sala, proiectul trebuie terminat. Cred ca functionalitatea functioneaza, trebuie testata
+    salaDeFitness1.actiune(Actiune.DESCHIDE); // am deschis manual sala, proiectul trebuie terminat.
 
     }
 }
