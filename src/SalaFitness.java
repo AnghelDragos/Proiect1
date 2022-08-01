@@ -49,12 +49,14 @@ public class SalaFitness{ //pot fi prezente maxim 3 persoane simultan
                         for(int i=0; i<persoaneIntrate.length; i++){
                             if(persoaneIntrate[i]==null){
                                 persoaneIntrate[i]=antrenor1;
+                                numarPersoaneIntrate++;
+                                System.out.println("A intrat în sală antrenorul " + nume);
                             }
                         }
-                        numarPersoaneIntrate++;
 
                     }
         }
+
         private void adaugaAbonat (String nume,int varsta, int progres){
             for (Persoana p1 : persoaneIntrate) {
                 if (p1 == null) {
