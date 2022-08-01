@@ -2,7 +2,8 @@ public class SalaFitness{ //pot fi prezente maxim 3 persoane simultan
     int numarPersoaneIntrate;
     boolean persoanaEsteIntrata;
     boolean salaEsteDeschisa;
-    Persoana[] persoaneIntrate = new Abonati[2];// 0,1,2
+    Persoana[] persoaneIntrate = new Abonati[3];// 0,1,2
+    int nrPersoane;
 
 
     private void intrareInSala(Abonati abonatOarecare) {
@@ -15,22 +16,9 @@ public class SalaFitness{ //pot fi prezente maxim 3 persoane simultan
             } else {
                 System.out.println("Din pacate sala este plina și nu se mai poate intra!");
                 salaEsteDeschisa = false;
+             }
             }
-        }
-
-//            if (numarPersoaneIntrate < 3) {
-//                System.out.println("Persoana a intrat in sala");
-//                persoanaEsteIntrata = true;
-//                persoaneIntrate[abonatOarecare.getId()] = abonatOarecare;// nu e bine sa alocam dupa ID pt ca sunt si antrenori in sala si ei nu tin cont de ID
-//                numarPersoaneIntrate++;
-//                salaEsteDeschisa = true;//aici poate aparea problema ca adaugand a treia persoana totusi sala sa fie deschisa,
-//                //// dar la incercarea adaugarii unei a patra persoane(desi sala este deschisa) se constata ca sunt
-//                //deja 3 persoane, se respinge a patra persoana, si abia atunci se inchide sala
-//            } else {
-//                System.out.println("Sunt deja 3 perosane intrate in sala de Fitness");
-//                salaEsteDeschisa = false;
-//            }
-        }// aici se termina "intrareInSala"
+           }
 
         private void iesireDinSala () {
             if (persoanaEsteIntrata == false) {
@@ -53,18 +41,19 @@ public class SalaFitness{ //pot fi prezente maxim 3 persoane simultan
         }
 
         private void adaugaAntrenor (String nume,int varsta, int numarDeAbonati){
-            for (Persoana p1 : persoaneIntrate) {
-                if(p1==null){
-                    System.out.println("A intrat in sala antrenorul " + nume);
-                    Persoana antrenorNou = new Antrenori(nume, varsta, numarDeAbonati);
-                    p1 = antrenorNou;
-                    numarPersoaneIntrate++;
-                    break;
-                }
-                else{
-                    System.out.println("Din păcate, sala este plină și " + nume + "nu mai poate intra");
-                }
-            }
+                    if(numarPersoaneIntrate==3){
+                        System.out.println("Din pacate sala este plina și " + nume + " nu mai poate intra!");
+                    }
+                    else{
+                        Antrenori antrenor1 = new Antrenori(nume,varsta,numarDeAbonati);
+                        for(int i=0; i<persoaneIntrate.length; i++){
+                            if(persoaneIntrate[i]==null){
+                                persoaneIntrate[i]=antrenor1;
+                            }
+                        }
+                        numarPersoaneIntrate++;
+
+                    }
         }
         private void adaugaAbonat (String nume,int varsta, int progres){
             for (Persoana p1 : persoaneIntrate) {
