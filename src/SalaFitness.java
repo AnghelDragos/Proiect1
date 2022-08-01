@@ -51,6 +51,7 @@ public class SalaFitness{ //pot fi prezente maxim 3 persoane simultan
                                 persoaneIntrate[i]=antrenor1;
                                 numarPersoaneIntrate++;
                                 System.out.println("A intrat în sală antrenorul " + nume);
+                                break;
                             }
                         }
 
