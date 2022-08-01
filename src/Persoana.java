@@ -21,4 +21,8 @@ public abstract class Persoana {
     public int getId(){
         return id;
     }
+
+    void afiseazaInformatii(){
+        System.out.println("Persoana se numeste: " + nume + "si are varsta " + varsta);
+    }
 }

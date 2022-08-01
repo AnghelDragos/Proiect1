@@ -2,8 +2,8 @@ public class SalaFitness{ //pot fi prezente maxim 3 persoane simultan
     int numarPersoaneIntrate;
     boolean persoanaEsteIntrata;
     boolean salaEsteDeschisa;
-    Persoana[] persoaneIntrate = new Abonati[3];// 0,1,2
-    int nrPersoane;
+    Persoana[] persoaneIntrate = new Persoana[3];// 0,1,2
+
 
 
     private void intrareInSala(Abonati abonatOarecare) {
@@ -59,32 +59,41 @@ public class SalaFitness{ //pot fi prezente maxim 3 persoane simultan
         }
 
         private void adaugaAbonat (String nume,int varsta, int progres){
-            for (Persoana p1 : persoaneIntrate) {
-                if (p1 == null) {
-                    Abonati abonatnou = new Abonati(nume, varsta);
-                    abonatnou.progresFacut = progres;
-                    p1 = abonatnou;
-                    System.out.println("A intrat un abonatul cu numele: " + nume);
-                    numarPersoaneIntrate++;
-                    break;
-                } else {
-                    System.out.println("Din pacate sala este plina și" + nume + " nu mai poate intra!");
-                    salaEsteDeschisa = false;
-                }
+            if (numarPersoaneIntrate==3) {
+                System.out.println("Din pacate sala este plina și " + nume + " nu mai poate intra!");
             }
+            else {
+                Abonati abonatNou = new Abonati(nume, varsta);
+                abonatNou.progresFacut = progres;
+                for(int i=0; i<persoaneIntrate.length;i++){
+                    if(persoaneIntrate[i]==null){
+                        persoaneIntrate[i]=abonatNou;
+                        numarPersoaneIntrate++;
+                        System.out.println("A intrat în sală abonatul " + nume);
+                        break;
+                         }
+                     }
+                 }
         }
 
         private void afiseazaPersoane(){
-            for (Persoana p1 : persoaneIntrate){
-                if(p1!=null){
-                    System.out.println(p1.nume+" este in sala");
-                }
-                else{
-                    System.out.println("Sala este libera!");
-                    salaEsteDeschisa = true;
+            if(numarPersoaneIntrate>0){
+                System.out.println("Persoanele din sala sunt: ");
+                for(Persoana p: persoaneIntrate){
+                    if(p!=null){
+                        p.afiseazaInformatii();
+                    }
                 }
             }
+            else{
+                System.out.println("Sala este libera!");
+            }
         }
+
+
+
+
+
 
         private void afiseazaAntrenori(){
         boolean antrenorGasit=false;
